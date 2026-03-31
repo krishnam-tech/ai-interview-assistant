@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Interview Evaluation</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+}
+
+textarea{
+width:60%;
+height:80px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+}
+
+#result{
+margin-top:20px;
+font-weight:bold;
+color:blue;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Interview Answer Evaluation</h2>
+
+<textarea id="a1" placeholder="Answer 1"></textarea><br>
+<textarea id="a2" placeholder="Answer 2"></textarea><br>
+<textarea id="a3" placeholder="Answer 3"></textarea><br>
+
+<button onclick="evaluate()">Evaluate Answers</button>
+
+<div id="result"></div>
+
+<script>
+
+function evaluate(){
+
+let answers = [
+
+document.getElementById("a1").value,
+document.getElementById("a2").value,
+document.getElementById("a3").value
+
+];
+
+fetch("http://localhost:8080/api/interview/evaluate",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(answers)
+
+})
+
+.then(res=>res.text())
+
+.then(data=>{
+
+document.getElementById("result").innerText = data;
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
