@@ -10,7 +10,7 @@ import org.json.JSONArray;
 @Service
 public class GeminiService {
 
-    private final String API_KEY ="AIzaSyC6dXB50HCSJSVXXO-Yf1MWJfIFQ7OZU2o";
+    private final String API_KEY ="API_KEY";
 
     public String getFeedback(String question, String answer) {
 
